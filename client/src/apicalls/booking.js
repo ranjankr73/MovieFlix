@@ -1,18 +1,12 @@
-import axios from "axios";
-const config = {
-    headers:{
-        'Content-type':'application/json',
-        authorization:`Bearer ${localStorage.getItem('token')}`
-    }
-  };
+import {api} from "./index.js";
 
 // make payment
 export const MakePayment = async (token, amount) => {
   try {
-    const response = await axios.post("/bookings/make-payment", {
+    const response = await api.post("/bookings/make-payment", {
       token,
       amount,
-    }, config);
+    });
     return response.data;
   } catch (error) {
     return error.response.data;
@@ -22,7 +16,7 @@ export const MakePayment = async (token, amount) => {
 //book shows
 export const BookShowTickets = async (payload) => {
   try {
-    const response = await axios.post("/bookings/book-show", payload, config);
+    const response = await api.post("/bookings/book-show", payload);
     return response.data;
   } catch (error) {
     return error.response.data;
@@ -32,7 +26,7 @@ export const BookShowTickets = async (payload) => {
 //get bookings of a user
 export const GetBookingsOfUser = async () => {
   try {
-    const response = await axios.get("/bookings/get-bookings", config);
+    const response = await api.get("/bookings/get-bookings");
     return response.data;
   } catch (error) {
     return error.response.data;

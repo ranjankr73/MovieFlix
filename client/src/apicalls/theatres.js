@@ -1,14 +1,10 @@
-import axios from "axios";
-const config = {
-    headers:{
-        'Content-type':'application/json',
-        authorization:`Bearer ${localStorage.getItem('token')}`
-    }
-  };
+import { api } from "./index.js";
+
 //add a new theatre
 export const AddTheatre = async (payload) => {
     try {
-        const response = await axios.post("/theatres/add-theatre", payload,config);
+        const response = await api.post("/theatres/add-theatre", payload);
+        console.log(response);
         return response.data;
     } catch (error) {
         return error.response;
@@ -18,7 +14,7 @@ export const AddTheatre = async (payload) => {
 //get all theatres
 export const GetAllTheatres = async () => {
     try {
-        const response = await axios.get("/theatres/get-all-theatres", config);
+        const response = await api.get("/theatres/get-all-theatres");
         return response.data;
     } catch (error) {
         return error.response;
@@ -28,7 +24,8 @@ export const GetAllTheatres = async () => {
 //get all theatres by owner
 export const GetAllTheatresByOwner = async (payload) => {
     try {
-        const response = await axios.post("/theatres/get-all-theatres-by-owner", payload, config);
+        const response = await api.post("/theatres/get-all-theatres-by-owner", payload);
+        console.log(response);
         return response.data;
     } catch (error) {
         return error.response;
@@ -38,7 +35,7 @@ export const GetAllTheatresByOwner = async (payload) => {
 //update theatre
 export const UpdateTheatre = async (payload) => {
     try {
-        const response = await axios.post("/theatres/update-theatre", payload, config);
+        const response = await api.post("/theatres/update-theatre", payload);
         return response.data;
     } catch (error) {
         return error.message;
@@ -48,7 +45,7 @@ export const UpdateTheatre = async (payload) => {
 //delete theatre
 export const DeleteTheatre = async (payload) => {
     try {
-        const response = await axios.post("/theatres/delete-theatre", payload, config);
+        const response = await api.post("/theatres/delete-theatre", payload);
         return response.data;
     } catch (error) {
         return error.message;
@@ -58,7 +55,7 @@ export const DeleteTheatre = async (payload) => {
 //add show
 export const AddShow = async (payload) => {
     try {
-        const response = await axios.post("/theatres/add-show", payload, config);
+        const response = await api.post("/theatres/add-show", payload);
         return response.data;
     } catch (error) {
         return error.response;
@@ -68,7 +65,7 @@ export const AddShow = async (payload) => {
 //get all shows
 export const GetAllShowsByTheatre = async (payload) => {
     try {
-        const response = await axios.post("/theatres/get-all-shows-by-theatre", payload, config);
+        const response = await api.post("/theatres/get-all-shows-by-theatre", payload);
         return response.data;
     } catch (error) {
         return error.response;
@@ -78,7 +75,7 @@ export const GetAllShowsByTheatre = async (payload) => {
 //delete show
 export const DeleteShow = async (payload) => {
     try {
-        const response = await axios.post("/theatres/delete-show", payload, config);
+        const response = await api.post("/theatres/delete-show", payload);
         return response.data;
     } catch (error) {
         return error.response;
@@ -88,10 +85,9 @@ export const DeleteShow = async (payload) => {
 //Get All Theatres By Movie
 export const GetAllTheatresByMovie = async (payload) => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "/theatres/get-all-theatres-by-movie",
-        payload,config
-      );
+        payload);
       return response.data;
     } catch (error) {
       return error.response;
@@ -102,10 +98,9 @@ export const GetAllTheatresByMovie = async (payload) => {
 //Get Show By Id
   export const GetShowById = async (payload) => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "/theatres/get-show-by-id",
-        payload,config
-      );
+        payload);
       return response.data;
     } catch (error) {
       return error.response;

@@ -3,7 +3,6 @@ import PageTitle from "../../components/PageTitle";
 import { Tabs } from "antd";
 import MoviesList from "./MoviesList";
 import TheatresList from "./TheatresList";
-// import TheatresList from "./TheatresList";
 
 function Admin() {
   return (

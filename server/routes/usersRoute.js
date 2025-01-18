@@ -9,7 +9,7 @@ require("dotenv").config();
 //register a new user
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, isAdmin } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({
@@ -36,6 +36,7 @@ router.post("/register", async (req, res) => {
       name: name,
       email: email,
       password: hashedPassword,
+      isAdmin: isAdmin
     });
 
     const savedUser = await user.save();
