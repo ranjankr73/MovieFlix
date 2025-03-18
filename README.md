@@ -1,4 +1,4 @@
-# CinemaGhar
+# MovieFlix
 
 ## Introduction
 ### Following features are added in this project:
