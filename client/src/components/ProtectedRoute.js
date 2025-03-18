@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { SetUser } from '../redux/usersSlice';
 import { HideLoading,ShowLoading} from '../redux/loadersSlice';
+
 function ProtectedRoute({children}){
     
     const navigate=useNavigate();
@@ -43,7 +44,7 @@ useEffect(()=>{
                 <div>
                   <h1 className="text-2xl text-white cursor-pointer"
                     onClick={() => navigate("/")}
-                  >CINEMAGHAR</h1>
+                  >MOVIEFLIX</h1>
                 </div>
       
                 <div className="bg-white p-1 flex gap-1">
@@ -51,7 +52,7 @@ useEffect(()=>{
                   <h1
                     className="text-sm underline"
                     onClick={() => {
-                      if (user.isAdmin) {
+                      if (user.role == "Admin") {
                         navigate("/admin");
                       } else {
                         navigate("/profile");
@@ -64,7 +65,7 @@ useEffect(()=>{
                   <i
                     className="ri-logout-box-r-line ml-2"
                     onClick={() => {
-                      localStorage.removeItem("token");
+                      document.cookie = "accessToken=; refreshToken=;"
                       navigate("/login");
                     }}
                   ></i>

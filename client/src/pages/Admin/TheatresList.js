@@ -5,7 +5,7 @@ import { HideLoading, ShowLoading } from '../../redux/loadersSlice';
 import { Table, message } from 'antd';
 
 function TheatresList() {
-const [theatres = [], setTheatres] = useState([]);
+const [theatres, setTheatres] = useState([]);
 const dispatch = useDispatch();
 
 const getData = async () => {
@@ -17,10 +17,11 @@ const getData = async () => {
       } else {
         message.error(response.message);
       }
-      dispatch(HideLoading());
+      
     } catch (error) {
-      dispatch(HideLoading());
       message.error(error.message);
+    } finally{
+      dispatch(HideLoading());
     }
   };
   
@@ -34,7 +35,7 @@ const getData = async () => {
       });
       if(response.success){
         message.success(response.message);
-        getData();
+        await getData();
       }else{
         message.error(response.message);
       }
@@ -54,6 +55,10 @@ const getData = async () => {
         dataIndex: "address",
     },
     {
+      title: "City",
+      dataIndex: "city",
+    },
+    {
         title: "Phone",
         dataIndex: "phone",
     },
@@ -65,7 +70,7 @@ const getData = async () => {
         title: "Owner",
         dataIndex: "owner",
         render: (text, record) => {
-          return record.owner.name;
+          return record.owner ? record.owner.name : "N/A";
         }
     },
     {
@@ -101,7 +106,8 @@ const getData = async () => {
 
   return (
     <div>
-       <Table columns={columns} dataSource={theatres} />
+       <Table columns={columns} dataSource={theatres} rowKey="_id"/>
+       {/* <Table columns={columns} dataSource={theatres.map(theatre => ({ ...theatre, key: theatre._id }))} /> */}
     </div>
   )
 }

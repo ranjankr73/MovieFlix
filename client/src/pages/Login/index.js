@@ -39,7 +39,7 @@ function LOGIN() {
   return (
     <div className='flex justify-center h-screen items-center bg-primary'>
       <div className='card p-3 w-400'>
-        <h1 className="text-xl mb-1 pl-1">CINEMAGHAR - LOGIN</h1>
+        <h1 className="text-xl mb-1 pl-1">MOVIEFLIX - LOGIN</h1>
         <hr />
         <Form
         layout='vertical'

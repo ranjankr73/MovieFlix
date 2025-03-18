@@ -18,6 +18,7 @@ router.post("/add-movie",getLoggedInUser,async(req,res)=>{
         });
     }
 });
+
 //get all movies
 router.get("/get-all-movies", async (req, res) => {
     try {
@@ -34,6 +35,7 @@ router.get("/get-all-movies", async (req, res) => {
       });
     }
   });
+
   // update a movie
 router.post("/update-movie", getLoggedInUser, async (req, res) => {
     try {
@@ -65,6 +67,7 @@ router.post("/update-movie", getLoggedInUser, async (req, res) => {
       });
     }
   });
+  
   // get a movie by id
 router.get("/get-movie-by-id/:id", async (req, res) => {
   try {

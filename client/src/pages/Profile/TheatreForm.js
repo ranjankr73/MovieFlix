@@ -73,7 +73,13 @@ const onFinish = async (values)=> {
             <textarea type="text" />
         </Form.Item>
 
-
+        <Form.Item
+          label="City"
+          name="city"
+          rules={[{required: true, message: "Please input theatre city!"}]}
+        >
+          <input type="text"/>
+        </Form.Item>
         <Form.Item
            label="Phone Number"
            name="phone"

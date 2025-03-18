@@ -10,6 +10,11 @@ const theatreSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
+      city: {
+        type: String,
+        unique: true,
+        required: true,
+      },
       phone: {
         type: String,
         required: true,
